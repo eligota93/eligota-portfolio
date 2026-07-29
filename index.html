@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eli Gota — website designer and developer creating complete, responsive websites for ambitious businesses.">
+  <title>Eli Gota — Website Designer & Developer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header class="nav shell">
+      <a class="wordmark" href="#top" aria-label="Eli Gota home">EG<span>.</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="#work" data-copy="navWork">Selected work</a>
+        <a href="#about" data-copy="navAbout">About</a>
+        <a href="#contact" data-copy="navContact">Contact</a>
+      </nav>
+      <div class="language" aria-label="Language selector">
+        <button class="active" type="button" data-lang="en">EN</button><span>/</span>
+        <button type="button" data-lang="al">AL</button>
+      </div>
+    </header>
+
+    <section class="hero shell" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow" data-copy="eyebrow">Website designer & developer</p>
+        <h1 class="desktop-title">
+          <span data-copy="heroA">I design websites</span><br>
+          <span data-copy="heroB">that feel </span><em data-copy="heroAccent">distinct.</em>
+        </h1>
+        <p class="intro" data-copy="intro">I’m Eli Gota, a website designer and developer creating clear, modern digital experiences for ambitious businesses.</p>
+        <div class="hero-actions">
+          <a class="button dark" href="#work"><span data-copy="viewWork">View selected work</span><span>↘</span></a>
+          <span class="availability"><i></i><span data-copy="available">Available for new projects</span></span>
+        </div>
+      </div>
+      <div class="portrait-wrap">
+        <h1 class="mobile-title">
+          <span data-copy="heroA">I design websites</span><br>
+          <span data-copy="heroB">that feel </span><em data-copy="heroAccent">distinct.</em>
+        </h1>
+        <div class="portrait-label">ELI<br>GOTA</div>
+        <img src="images/eli-gota.png" alt="Eli Gota, website designer and developer">
+        <span class="portrait-index">01 / 01</span>
+      </div>
+    </section>
+
+    <section class="work shell" id="work">
+      <div class="section-head">
+        <div><h2 data-copy="selected">Selected work</h2></div>
+        <p data-copy="selectedSub">A collection of websites shaped around each brand’s character, audience and goals.</p>
+      </div>
+      <div class="projects" id="projects"></div>
+    </section>
+
+    <section class="about shell" id="about">
+      <div class="about-label" data-copy="aboutLabel">About me</div>
+      <div class="about-content">
+        <h2 data-copy="aboutTitle">From first idea to fully developed website.</h2>
+        <p data-copy="aboutText">I began training in website development five years ago. Since then, I’ve developed a hands-on approach that brings design and code together—creating responsive websites that are distinctive, easy to use and built around real business needs.</p>
+        <div class="services">
+          <span data-copy="serviceOne">Website design</span>
+          <span data-copy="serviceTwo">Full website development</span>
+          <span data-copy="serviceThree">Responsive experiences</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="shell">
+        <p data-copy="contactLabel">Have a project in mind?</p>
+        <h2 data-copy="contactTitle">Let’s create something worth remembering.</h2>
+        <a id="whatsapp-link" href="#" target="_blank" rel="noreferrer">
+          <span data-copy="email">Start a conversation</span><span>↗</span>
+        </a>
+        <div class="email-address">eligota93@gmail.com</div>
+      </div>
+    </section>
+
+    <footer class="shell">
+      <a class="wordmark" href="#top">EG<span>.</span></a>
+      <p>© <span id="year"></span> · <span data-copy="footer">Design & development by Eli Gota</span></p>
+      <a href="#top" aria-label="Back to top">↑</a>
+    </footer>
+  </main>
+
+  <script>
+    const copy = {
+      en: {
+        navWork: "Selected work", navAbout: "About", navContact: "Contact",
+        eyebrow: "Website designer & developer", heroA: "I design websites",
+        heroB: "that feel ", heroAccent: "distinct.",
+        intro: "I’m Eli Gota, a website designer and developer creating clear, modern digital experiences for ambitious businesses.",
+        viewWork: "View selected work", available: "Available for new projects",
+        selected: "Selected work",
+        selectedSub: "A collection of websites shaped around each brand’s character, audience and goals.",
+        visit: "Visit website", aboutLabel: "About me",
+        aboutTitle: "From first idea to fully developed website.",
+        aboutText: "I began training in website development five years ago. Since then, I’ve developed a hands-on approach that brings design and code together—creating responsive websites that are distinctive, easy to use and built around real business needs.",
+        serviceOne: "Website design", serviceTwo: "Full website development",
+        serviceThree: "Responsive experiences", contactLabel: "Have a project in mind?",
+        contactTitle: "Let’s create something worth remembering.",
+        email: "Start a conversation", footer: "Design & development by Eli Gota",
+        whatsapp: "Hello, i'm interested in starting a website project with you!"
+      },
+      al: {
+        navWork: "Punët e zgjedhura", navAbout: "Rreth meje", navContact: "Kontakt",
+        eyebrow: "Dizajnere & zhvilluese e faqeve", heroA: "Dizajnoj faqe",
+        heroB: "që duken ", heroAccent: "ndryshe.",
+        intro: "Jam Eli Gota, dizajnere dhe zhvilluese e faqeve që krijon përvoja digjitale të qarta e moderne për biznese ambicioze.",
+        viewWork: "Shiko punët", available: "E gatshme për projekte të reja",
+        selected: "Punët e zgjedhura",
+        selectedSub: "Një përmbledhje faqesh të krijuara sipas karakterit, audiencës dhe qëllimeve të secilit brand.",
+        visit: "Vizito faqen", aboutLabel: "Rreth meje",
+        aboutTitle: "Nga ideja e parë te një faqe e zhvilluar plotësisht.",
+        aboutText: "Kam filluar trajnimin për zhvillimin e faqeve pesë vjet më parë. Që atëherë kam ndërtuar një qasje praktike që bashkon dizajnin me kodin—duke krijuar faqe responsive, të veçanta, të lehta për përdorim dhe të përshtatura për nevojat reale të biznesit.",
+        serviceOne: "Dizajn i faqeve", serviceTwo: "Zhvillim i plotë i faqeve",
+        serviceThree: "Përvoja responsive", contactLabel: "Keni një projekt në mendje?",
+        contactTitle: "Le të krijojmë diçka që mbahet mend.",
+        email: "Nis një bisedë", footer: "Dizajn & zhvillim nga Eli Gota",
+        whatsapp: "Përshëndetje, jam e interesuar të filloj një projekt për një faqe interneti me ju!"
+      }
+    };
+
+    const projects = [
+      { title: "EcoPack", type: "Packaging · Corporate", image: "images/ecopack.png", url: "https://ecopack.al/", tone: "sage" },
+      { title: "Ergi Bakery & Pastry", type: "Hospitality · Showcase", image: "images/ergi.png", url: "https://pasticeriergi.com/", tone: "wine" },
+      { title: "KamboS Rental Car", type: "Rental · Booking", image: "images/kambos.png", url: "https://kambosrental.com/", tone: "sky" },
+      { title: "Illyrian Healthy Line", type: "Wellness · E-commerce", image: "images/gingershot.png", url: "https://eligota93.github.io/gingershot/", tone: "sand" },
+      { title: "EZ Autotransport", type: "Automotive · Services", image: "images/ezautotransport.png", url: "https://eligota93.github.io/ezautotransport/", tone: "charcoal" },
+      { title: "Makadam Hotel", type: "Hospitality · Booking", image: "images/makadam.png", url: "https://makadamhotel.com/", tone: "rose" }
+    ];
+
+    let language = "en";
+
+    function renderProjects() {
+      document.getElementById("projects").innerHTML = projects.map((project, index) => `
+        <article class="project ${project.tone}">
+          <a href="${project.url}" target="_blank" rel="noreferrer" aria-label="${copy[language].visit}: ${project.title}">
+            <div class="project-image">
+              <img src="${project.image}" alt="${project.title} website preview">
+              <span class="open-icon">↗</span>
+            </div>
+            <div class="project-meta">
+              <div><span>${String(index + 1).padStart(2, "0")}</span><h3>${project.title}</h3></div>
+              <p>${project.type}</p>
+              <span class="visit">${copy[language].visit} ↗</span>
+            </div>
+          </a>
+        </article>
+      `).join("");
+    }
+
+    function setLanguage(lang) {
+      language = lang;
+      document.documentElement.lang = lang === "al" ? "sq" : "en";
+      document.querySelectorAll("[data-copy]").forEach(element => {
+        const key = element.dataset.copy;
+        if (copy[lang][key]) element.textContent = copy[lang][key];
+      });
+      document.querySelectorAll("[data-lang]").forEach(button => {
+        button.classList.toggle("active", button.dataset.lang === lang);
+      });
+      document.getElementById("whatsapp-link").href =
+        `https://wa.me/38349260868?text=${encodeURIComponent(copy[lang].whatsapp)}`;
+      renderProjects();
+    }
+
+    document.querySelectorAll("[data-lang]").forEach(button => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+    setLanguage("en");
+  </script>
+</body>
+</html>
