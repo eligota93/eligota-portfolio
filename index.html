@@ -31,7 +31,7 @@
         </h1>
         <p class="intro" data-copy="intro">I’m Eli Gota, a website designer and developer creating clear, modern digital experiences for ambitious businesses.</p>
         <div class="hero-actions">
-          <a class="button dark" href="#work"><span data-copy="viewWork">View selected work</span><span>↘</span></a>
+          <a class="button dark" href="#work"><span data-copy="viewWork">View selected work</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 10 10"></path><path d="M7 15h8V7"></path></svg></a>
           <span class="availability"><i></i><span data-copy="available">Available for new projects</span></span>
         </div>
       </div>
@@ -72,7 +72,7 @@
         <p data-copy="contactLabel">Have a project in mind?</p>
         <h2 data-copy="contactTitle">Let’s create something worth remembering.</h2>
         <a id="whatsapp-link" href="#" target="_blank" rel="noreferrer">
-          <span data-copy="email">Start a conversation</span><span>↗</span>
+          <span data-copy="email">Start a conversation</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15 15 5"></path><path d="M7 5h8v8"></path></svg>
         </a>
         <div class="email-address">eligota93@gmail.com</div>
       </div>
@@ -81,7 +81,7 @@
     <footer class="shell">
       <a class="wordmark" href="#top">EG<span>.</span></a>
       <p>© <span id="year"></span> · <span data-copy="footer">Design & development by Eli Gota</span></p>
-      <a href="#top" aria-label="Back to top">↑</a>
+      <a href="#top" aria-label="Back to top"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5"></path><path d="m6 11 6-6 6 6"></path></svg></a>
     </footer>
   </main>
 
@@ -140,12 +140,12 @@
           <a href="${project.url}" target="_blank" rel="noreferrer" aria-label="${copy[language].visit}: ${project.title}">
             <div class="project-image">
               <img src="${project.image}" alt="${project.title} website preview">
-              <span class="open-icon">↗</span>
+              <span class="open-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15 15 5"></path><path d="M7 5h8v8"></path></svg></span>
             </div>
             <div class="project-meta">
               <div><span>${String(index + 1).padStart(2, "0")}</span><h3>${project.title}</h3></div>
               <p>${project.type}</p>
-              <span class="visit">${copy[language].visit} ↗</span>
+              <span class="visit">${copy[language].visit}<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15 15 5"></path><path d="M7 5h8v8"></path></svg></span>
             </div>
           </a>
         </article>
