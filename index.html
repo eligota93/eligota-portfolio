@@ -57,8 +57,12 @@
     <section class="about shell" id="about">
       <div class="about-label" data-copy="aboutLabel">About me</div>
       <div class="about-content">
-        <h2 data-copy="aboutTitle">From first idea to fully developed website.</h2>
-        <p data-copy="aboutText">I began training in website development five years ago. Since then, I’ve developed a hands-on approach that brings design and code together—creating responsive websites that are distinctive, easy to use and built around real business needs.</p>
+        <h2 data-copy="aboutTitle">Your business deserves a website that works as hard as you do.</h2>
+        <p data-copy="aboutText">I design and develop modern, responsive websites built around your brand and business goals.
+
+I combine thoughtful design, seamless functionality, and a user-focused approach to create websites that look good &amp; help your business stand out, build trust, and turn visitors into customers.
+
+Let’s build your next website.</p>
         <div class="services">
           <span data-copy="serviceOne">Website design</span>
           <span data-copy="serviceTwo">Full website development</span>
@@ -96,8 +100,8 @@
         selected: "Selected work",
         selectedSub: "A collection of websites shaped around each brand’s character, audience and goals.",
         visit: "Visit website", aboutLabel: "About me",
-        aboutTitle: "From first idea to fully developed website.",
-        aboutText: "I began training in website development five years ago. Since then, I’ve developed a hands-on approach that brings design and code together—creating responsive websites that are distinctive, easy to use and built around real business needs.",
+        aboutTitle: "Your business deserves a website that works as hard as you do.",
+        aboutText: "I design and develop modern, responsive websites built around your brand and business goals.\n\nI combine thoughtful design, seamless functionality, and a user-focused approach to create websites that look good & help your business stand out, build trust, and turn visitors into customers.\n\nLet’s build your next website.",
         serviceOne: "Website design", serviceTwo: "Full website development",
         serviceThree: "Responsive experiences", contactLabel: "Have a project in mind?",
         contactTitle: "Let’s create something worth remembering.",
@@ -113,8 +117,8 @@
         selected: "Punët e zgjedhura",
         selectedSub: "Një përmbledhje faqesh të krijuara sipas karakterit, audiencës dhe qëllimeve të secilit brand.",
         visit: "Vizito faqen", aboutLabel: "Rreth meje",
-        aboutTitle: "Nga ideja e parë te një faqe e zhvilluar plotësisht.",
-        aboutText: "Kam filluar trajnimin për zhvillimin e faqeve pesë vjet më parë. Që atëherë kam ndërtuar një qasje praktike që bashkon dizajnin me kodin—duke krijuar faqe responsive, të veçanta, të lehta për përdorim dhe të përshtatura për nevojat reale të biznesit.",
+        aboutTitle: "Biznesi juaj meriton një faqe që punon po aq fort sa ju.",
+        aboutText: "Dizajnoj dhe zhvilloj faqe moderne, responsive, të ndërtuara rreth brandit dhe qëllimeve të biznesit tuaj.\n\nBashkoj dizajnin e menduar, funksionalitetin pa pengesa dhe një qasje të fokusuar te përdoruesi për të krijuar faqe që duken bukur dhe e ndihmojnë biznesin tuaj të dallohet, të ndërtojë besim dhe t’i kthejë vizitorët në klientë.\n\nLe ta ndërtojmë faqen tuaj të ardhshme.",
         serviceOne: "Dizajn i faqeve", serviceTwo: "Zhvillim i plotë i faqeve",
         serviceThree: "Përvoja responsive", contactLabel: "Keni një projekt në mendje?",
         contactTitle: "Le të krijojmë diçka që mbahet mend.",
@@ -137,17 +141,19 @@
     function renderProjects() {
       document.getElementById("projects").innerHTML = projects.map((project, index) => `
         <article class="project ${project.tone}">
-          <a href="${project.url}" target="_blank" rel="noreferrer" aria-label="${copy[language].visit}: ${project.title}">
-            <div class="project-image">
-              <img src="${project.image}" alt="${project.title} website preview">
-              <span class="open-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15 15 5"></path><path d="M7 5h8v8"></path></svg></span>
-            </div>
-            <div class="project-meta">
-              <div><span>${String(index + 1).padStart(2, "0")}</span><h3>${project.title}</h3></div>
-              <p>${project.type}</p>
-              <span class="visit">${copy[language].visit}<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15 15 5"></path><path d="M7 5h8v8"></path></svg></span>
-            </div>
-          </a>
+          <div class="project-image">
+            <iframe src="${project.url}" title="${project.title} live website preview" loading="lazy"></iframe>
+            <a class="open-icon" href="${project.url}" target="_blank" rel="noreferrer" aria-label="${copy[language].visit}: ${project.title}">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15 15 5"></path><path d="M7 5h8v8"></path></svg>
+            </a>
+          </div>
+          <div class="project-meta">
+            <div><span>${String(index + 1).padStart(2, "0")}</span><h3>${project.title}</h3></div>
+            <p>${project.type}</p>
+            <a class="visit" href="${project.url}" target="_blank" rel="noreferrer">
+              ${copy[language].visit}<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15 15 5"></path><path d="M7 5h8v8"></path></svg>
+            </a>
+          </div>
         </article>
       `).join("");
     }
