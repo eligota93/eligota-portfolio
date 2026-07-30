@@ -28,18 +28,23 @@
       <div class="hero-copy">
         <p class="eyebrow" data-copy="eyebrow">Website designer & developer</p>
         <h1 class="desktop-title">
-          <span data-copy="mobileHeroA">I turn ideas</span>
+          <span class="idea-line"><span data-copy="mobileHeroA">I turn ideas</span><button class="idea-bulb" type="button" data-hint="Tap me" aria-label="Tap the lightbulb for an idea" aria-pressed="false"></button></span>
           <span data-copy="mobileHeroB">into powerful</span>
           <em data-copy="mobileHeroC">websites.</em>
         </h1>
         <p class="intro" data-copy="intro">I’m Eli Gota, a website designer and developer creating clear, modern digital experiences for ambitious businesses.</p>
         <h1 class="mobile-title">
           <span class="mobile-title-main">
-            <span data-copy="mobileHeroA">I turn ideas</span>
+            <span class="idea-line"><span data-copy="mobileHeroA">I turn ideas</span><button class="idea-bulb" type="button" data-hint="Tap me" aria-label="Tap the lightbulb for an idea" aria-pressed="false"></button></span>
             <span data-copy="mobileHeroB">into powerful</span>
             <em data-copy="mobileHeroC">websites.</em>
           </span>
         </h1>
+        <div class="idea-card" aria-live="polite">
+          <p id="idea-label">Here’s an idea for your next website</p>
+          <strong id="idea-text"></strong>
+          <div><button id="new-idea" type="button">New idea</button><a id="build-idea" target="_blank" rel="noreferrer">Build this with me<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15 15 5"></path><path d="M7 5h8v8"></path></svg></a></div>
+        </div>
         <div class="hero-actions">
           <a class="button dark" href="#work"><span data-copy="viewWork">View selected work</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 10 10"></path><path d="M7 15h8V7"></path></svg></a>
           <span class="availability"><i></i><span data-copy="available">Available for new projects</span></span>
@@ -104,6 +109,10 @@ Let’s build your next website.</p>
         navWork: "Selected work", navAbout: "About", navContact: "Contact",
         eyebrow: "Website designer & developer", heroA: "I design websites",
         mobileHeroA: "I turn ideas", mobileHeroB: "into powerful", mobileHeroC: "websites.",
+        ideaPrompt: "Tap the lightbulb for an idea", ideaLabel: "Here’s an idea for your next website",
+        ideaTap: "Tap me",
+        newIdea: "New idea", buildIdea: "Build this with me",
+        ideas: ["A service website that turns visitors into enquiries.","A modern online store designed around your products.","A booking website that makes reservations effortless.","A portfolio that makes your work impossible to overlook.","A bilingual website that helps you reach more customers.","A focused landing page for your next product launch."],
         heroB: "that feel ", heroAccent: "distinct.",
         intro: "I’m Eli Gota, a website designer and developer creating clear, modern digital experiences for ambitious businesses.",
         viewWork: "View selected work", available: "Available for new projects",
@@ -123,6 +132,10 @@ Let’s build your next website.</p>
         navWork: "Punët e zgjedhura", navAbout: "Rreth meje", navContact: "Kontakt",
         eyebrow: "Dizajnere & zhvilluese e faqeve", heroA: "Dizajnoj faqe",
         mobileHeroA: "I kthej idetë", mobileHeroB: "në faqe të", mobileHeroC: "fuqishme.",
+        ideaPrompt: "Prek llambën për një ide", ideaLabel: "Ja një ide për faqen tënde të ardhshme",
+        ideaTap: "Prek këtu",
+        newIdea: "Ide tjetër", buildIdea: "Ta ndërtojmë bashkë",
+        ideas: ["Një faqe shërbimesh që i kthen vizitorët në klientë potencialë.","Një dyqan modern online i krijuar rreth produkteve të tua.","Një faqe rezervimesh që e bën procesin shumë të thjeshtë.","Një portfolio që e bën punën tënde të pamundur për t’u anashkaluar.","Një faqe dygjuhëshe që të ndihmon të arrish më shumë klientë.","Një landing page e fokusuar për lançimin e produktit tënd."],
         heroB: "që duken ", heroAccent: "ndryshe.",
         intro: "Jam Eli Gota, dizajnere dhe zhvilluese e faqeve që krijon përvoja digjitale të qarta e moderne për biznese ambicioze.",
         viewWork: "Shiko punët", available: "E gatshme për projekte të reja",
@@ -150,6 +163,34 @@ Let’s build your next website.</p>
     ];
 
     let language = "en";
+    let ideaOn = false;
+    let ideaIndex = 0;
+    const bulbSvg = (on) => `<svg class="bulb-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M11.2 22.1h9.6"></path><path d="M12.5 26h7"></path><path d="M16 3.5a9 9 0 0 0-5.4 16.2c.9.7 1.5 1.5 1.7 2.4h7.4c.2-.9.8-1.7 1.7-2.4A9 9 0 0 0 16 3.5Z"></path>${on ? '<path class="bulb-filament" d="m12.5 13 2.3 2.3L19.7 10"></path>' : ''}<path class="bulb-ray" d="M16 0v2M4.7 4.7l1.5 1.5M0 16h2M30 16h2M25.8 6.2l1.5-1.5"></path></svg>`;
+
+    function renderIdea() {
+      document.querySelectorAll(".idea-bulb").forEach(button => {
+        button.innerHTML = bulbSvg(ideaOn);
+        button.classList.toggle("is-on", ideaOn);
+        button.setAttribute("aria-label", copy[language].ideaPrompt);
+        button.setAttribute("aria-pressed", String(ideaOn));
+        button.dataset.hint = copy[language].ideaTap;
+      });
+      document.querySelector(".idea-card").classList.toggle("is-visible", ideaOn);
+      document.getElementById("idea-label").textContent = copy[language].ideaLabel;
+      document.getElementById("idea-text").textContent = copy[language].ideas[ideaIndex];
+      document.getElementById("new-idea").textContent = copy[language].newIdea;
+      document.getElementById("build-idea").childNodes[0].nodeValue = copy[language].buildIdea;
+      const message = language === "en"
+        ? `Hello, I'm interested in creating this website with you: ${copy[language].ideas[ideaIndex]}`
+        : `Përshëndetje, jam e interesuar ta krijoj këtë faqe me ju: ${copy[language].ideas[ideaIndex]}`;
+      document.getElementById("build-idea").href = `https://wa.me/38349260868?text=${encodeURIComponent(message)}`;
+    }
+
+    function showNextIdea() {
+      if (ideaOn) ideaIndex = (ideaIndex + 1) % copy[language].ideas.length;
+      ideaOn = true;
+      renderIdea();
+    }
 
     function renderProjects() {
       document.getElementById("projects").innerHTML = projects.map((project, index) => `
@@ -191,12 +232,16 @@ Let’s build your next website.</p>
       });
       document.getElementById("whatsapp-link").href =
         `https://wa.me/38349260868?text=${encodeURIComponent(copy[lang].whatsapp)}`;
+      ideaIndex = Math.min(ideaIndex, copy[lang].ideas.length - 1);
+      renderIdea();
       renderProjects();
     }
 
     document.querySelectorAll("[data-lang]").forEach(button => {
       button.addEventListener("click", () => setLanguage(button.dataset.lang));
     });
+    document.querySelectorAll(".idea-bulb").forEach(button => button.addEventListener("click", showNextIdea));
+    document.getElementById("new-idea").addEventListener("click", showNextIdea);
     document.getElementById("year").textContent = new Date().getFullYear();
     setLanguage("en");
   </script>
