@@ -10,7 +10,9 @@
 <body>
   <main>
     <header class="nav shell">
-      <a class="wordmark" href="#top" aria-label="Eli Gota home">EG<span>.</span></a>
+      <a class="wordmark" href="#top" aria-label="Eli Gota home">
+        <img src="images/eli-gota-logo.png" alt="Eli Gota">
+      </a>
       <nav aria-label="Primary navigation">
         <a href="#work" data-copy="navWork">Selected work</a>
         <a href="#about" data-copy="navAbout">About</a>
@@ -26,23 +28,30 @@
       <div class="hero-copy">
         <p class="eyebrow" data-copy="eyebrow">Website designer & developer</p>
         <h1 class="desktop-title">
-          <span data-copy="heroA">I design websites</span><br>
-          <span data-copy="heroB">that feel </span><em data-copy="heroAccent">distinct.</em>
+          <span data-copy="mobileHeroA">I turn ideas</span>
+          <span data-copy="mobileHeroB">into powerful</span>
+          <em data-copy="mobileHeroC">websites.</em>
         </h1>
         <p class="intro" data-copy="intro">I’m Eli Gota, a website designer and developer creating clear, modern digital experiences for ambitious businesses.</p>
+        <h1 class="mobile-title">
+          <span class="mobile-title-main">
+            <span data-copy="mobileHeroA">I turn ideas</span>
+            <span data-copy="mobileHeroB">into powerful</span>
+            <em data-copy="mobileHeroC">websites.</em>
+          </span>
+        </h1>
         <div class="hero-actions">
           <a class="button dark" href="#work"><span data-copy="viewWork">View selected work</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 10 10"></path><path d="M7 15h8V7"></path></svg></a>
           <span class="availability"><i></i><span data-copy="available">Available for new projects</span></span>
         </div>
       </div>
       <div class="portrait-wrap">
-        <h1 class="mobile-title">
-          <span data-copy="heroA">I design websites</span><br>
-          <span data-copy="heroB">that feel </span><em data-copy="heroAccent">distinct.</em>
-        </h1>
         <div class="portrait-label">ELI<br>GOTA</div>
         <img src="images/eli-gota.png" alt="Eli Gota, website designer and developer">
-        <span class="portrait-index">01 / 01</span>
+      </div>
+      <div class="hero-actions mobile-actions">
+        <a class="button dark" href="#work"><span data-copy="viewWork">View selected work</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 10 10"></path><path d="M7 15h8V7"></path></svg></a>
+        <span class="availability"><i></i><span data-copy="available">Available for new projects</span></span>
       </div>
     </section>
 
@@ -94,11 +103,13 @@ Let’s build your next website.</p>
       en: {
         navWork: "Selected work", navAbout: "About", navContact: "Contact",
         eyebrow: "Website designer & developer", heroA: "I design websites",
+        mobileHeroA: "I turn ideas", mobileHeroB: "into powerful", mobileHeroC: "websites.",
         heroB: "that feel ", heroAccent: "distinct.",
         intro: "I’m Eli Gota, a website designer and developer creating clear, modern digital experiences for ambitious businesses.",
         viewWork: "View selected work", available: "Available for new projects",
         selected: "Selected work",
         selectedSub: "A collection of websites shaped around each brand’s character, audience and goals.",
+        scrollPreview: "Scroll to explore",
         visit: "Visit website", aboutLabel: "About me",
         aboutTitle: "Your business deserves a website that works as hard as you do.",
         aboutText: "I design and develop modern, responsive websites built around your brand and business goals.\n\nI combine thoughtful design, seamless functionality, and a user-focused approach to create websites that look good & help your business stand out, build trust, and turn visitors into customers.\n\nLet’s build your next website.",
@@ -111,11 +122,13 @@ Let’s build your next website.</p>
       al: {
         navWork: "Punët e zgjedhura", navAbout: "Rreth meje", navContact: "Kontakt",
         eyebrow: "Dizajnere & zhvilluese e faqeve", heroA: "Dizajnoj faqe",
+        mobileHeroA: "I kthej idetë", mobileHeroB: "në faqe të", mobileHeroC: "fuqishme.",
         heroB: "që duken ", heroAccent: "ndryshe.",
         intro: "Jam Eli Gota, dizajnere dhe zhvilluese e faqeve që krijon përvoja digjitale të qarta e moderne për biznese ambicioze.",
         viewWork: "Shiko punët", available: "E gatshme për projekte të reja",
         selected: "Punët e zgjedhura",
         selectedSub: "Një përmbledhje faqesh të krijuara sipas karakterit, audiencës dhe qëllimeve të secilit brand.",
+        scrollPreview: "Lëviz për ta parë",
         visit: "Vizito faqen", aboutLabel: "Rreth meje",
         aboutTitle: "Biznesi juaj meriton një faqe që punon po aq fort sa ju.",
         aboutText: "Dizajnoj dhe zhvilloj faqe moderne, responsive, të ndërtuara rreth brandit dhe qëllimeve të biznesit tuaj.\n\nBashkoj dizajnin e menduar, funksionalitetin pa pengesa dhe një qasje të fokusuar te përdoruesi për të krijuar faqe që duken bukur dhe e ndihmojnë biznesin tuaj të dallohet, të ndërtojë besim dhe t’i kthejë vizitorët në klientë.\n\nLe ta ndërtojmë faqen tuaj të ardhshme.",
@@ -143,6 +156,14 @@ Let’s build your next website.</p>
         <article class="project ${project.tone}">
           <div class="project-image">
             <iframe src="${project.url}" title="${project.title} live website preview" loading="lazy"></iframe>
+            <div class="preview-scroll-hint" aria-hidden="true">
+              <svg class="scroll-icon" viewBox="0 0 18 24">
+                <rect x="3.5" y="1.5" width="11" height="17" rx="5.5"></rect>
+                <path d="M9 5v5"></path>
+                <path d="m6.5 14 2.5 2.5 2.5-2.5"></path>
+              </svg>
+              <span>${copy[language].scrollPreview}</span>
+            </div>
             <a class="open-icon" href="${project.url}" target="_blank" rel="noreferrer" aria-label="${copy[language].visit}: ${project.title}">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15 15 5"></path><path d="M7 5h8v8"></path></svg>
             </a>
