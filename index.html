@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main>
+  <main class="site">
     <header class="nav shell">
       <a class="wordmark" href="#top" aria-label="Eli Gota home">
         <img src="images/eli-gota-logo.png" alt="Eli Gota">
@@ -28,23 +28,18 @@
       <div class="hero-copy">
         <p class="eyebrow" data-copy="eyebrow">Website designer & developer</p>
         <h1 class="desktop-title">
-          <span class="idea-line"><span data-copy="mobileHeroA">I turn ideas</span><button class="idea-bulb" type="button" data-hint="Tap me" aria-label="Tap the lightbulb for an idea" aria-pressed="false"></button></span>
+          <span class="idea-line"><span data-copy="mobileHeroA">I turn ideas</span><button class="idea-bulb" type="button" data-hint="Tap me" aria-label="Tap the lightbulb to reveal the code" aria-pressed="false"></button></span>
           <span data-copy="mobileHeroB">into powerful</span>
           <em data-copy="mobileHeroC">websites.</em>
         </h1>
         <p class="intro" data-copy="intro">I’m Eli Gota, a website designer and developer creating clear, modern digital experiences for ambitious businesses.</p>
         <h1 class="mobile-title">
           <span class="mobile-title-main">
-            <span class="idea-line"><span data-copy="mobileHeroA">I turn ideas</span><button class="idea-bulb" type="button" data-hint="Tap me" aria-label="Tap the lightbulb for an idea" aria-pressed="false"></button></span>
+            <span class="idea-line"><span data-copy="mobileHeroA">I turn ideas</span><button class="idea-bulb" type="button" data-hint="Tap me" aria-label="Tap the lightbulb to reveal the code" aria-pressed="false"></button></span>
             <span data-copy="mobileHeroB">into powerful</span>
             <em data-copy="mobileHeroC">websites.</em>
           </span>
         </h1>
-        <div class="idea-card" aria-live="polite">
-          <p id="idea-label">Here’s an idea for your next website</p>
-          <strong id="idea-text"></strong>
-          <div><button id="new-idea" type="button">New idea</button><a id="build-idea" target="_blank" rel="noreferrer">Build this with me<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15 15 5"></path><path d="M7 5h8v8"></path></svg></a></div>
-        </div>
         <div class="hero-actions">
           <a class="button dark" href="#work"><span data-copy="viewWork">View selected work</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 10 10"></path><path d="M7 15h8V7"></path></svg></a>
           <span class="availability"><i></i><span data-copy="available">Available for new projects</span></span>
@@ -54,6 +49,7 @@
         <div class="portrait-label">ELI<br>GOTA</div>
         <img src="images/eli-gota.png" alt="Eli Gota, website designer and developer">
       </div>
+      <div class="code-cloud" id="code-cloud" aria-hidden="true"></div>
       <div class="hero-actions mobile-actions">
         <a class="button dark" href="#work"><span data-copy="viewWork">View selected work</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 10 10"></path><path d="M7 15h8V7"></path></svg></a>
         <span class="availability"><i></i><span data-copy="available">Available for new projects</span></span>
@@ -85,6 +81,17 @@ Let’s build your next website.</p>
       </div>
     </section>
 
+    <section class="process shell" id="process">
+      <div class="process-head">
+        <p data-copy="processLabel">My process</p>
+        <div>
+          <h2 data-copy="processTitle">From first conversation to final launch.</h2>
+          <span data-copy="processIntro">A clear, collaborative process keeps every website focused, functional and built around your goals.</span>
+        </div>
+      </div>
+      <div class="process-track" id="process-track"></div>
+    </section>
+
     <section class="contact" id="contact">
       <div class="shell">
         <p data-copy="contactLabel">Have a project in mind?</p>
@@ -109,7 +116,7 @@ Let’s build your next website.</p>
         navWork: "Selected work", navAbout: "About", navContact: "Contact",
         eyebrow: "Website designer & developer", heroA: "I design websites",
         mobileHeroA: "I turn ideas", mobileHeroB: "into powerful", mobileHeroC: "websites.",
-        ideaPrompt: "Tap the lightbulb for an idea", ideaLabel: "Here’s an idea for your next website",
+        ideaPrompt: "Tap the lightbulb to reveal the code", ideaLabel: "Here’s an idea for your next website",
         ideaTap: "Tap me",
         newIdea: "New idea", buildIdea: "Build this with me",
         ideas: ["A service website that turns visitors into enquiries.","A modern online store designed around your products.","A booking website that makes reservations effortless.","A portfolio that makes your work impossible to overlook.","A bilingual website that helps you reach more customers.","A focused landing page for your next product launch."],
@@ -123,7 +130,17 @@ Let’s build your next website.</p>
         aboutTitle: "Your business deserves a website that works as hard as you do.",
         aboutText: "I design and develop modern, responsive websites built around your brand and business goals.\n\nI combine thoughtful design, seamless functionality, and a user-focused approach to create websites that look good & help your business stand out, build trust, and turn visitors into customers.\n\nLet’s build your next website.",
         serviceOne: "Website design", serviceTwo: "Full website development",
-        serviceThree: "Responsive experiences", contactLabel: "Have a project in mind?",
+        serviceThree: "Responsive experiences",
+        processLabel: "My process", processTitle: "From first conversation to final launch.",
+        processIntro: "A clear, collaborative process keeps every website focused, functional and built around your goals.",
+        processSteps: [
+          { title: "Discover", text: "We define your business, audience, goals and what the website needs to achieve." },
+          { title: "Design", text: "I shape the visual direction, page structure and user experience around your brand." },
+          { title: "Develop", text: "The approved design becomes a complete, responsive and functional website." },
+          { title: "Refine", text: "I test every detail, improve the experience and prepare everything for launch." },
+          { title: "Launch", text: "Your finished website goes live, ready for your business and your customers." }
+        ],
+        contactLabel: "Have a project in mind?",
         contactTitle: "Let’s create something worth remembering.",
         email: "Start a conversation", footer: "Design & development by Eli Gota",
         whatsapp: "Hello, i'm interested in starting a website project with you!"
@@ -132,7 +149,7 @@ Let’s build your next website.</p>
         navWork: "Punët e zgjedhura", navAbout: "Rreth meje", navContact: "Kontakt",
         eyebrow: "Dizajnere & zhvilluese e faqeve", heroA: "Dizajnoj faqe",
         mobileHeroA: "I kthej idetë", mobileHeroB: "në faqe të", mobileHeroC: "fuqishme.",
-        ideaPrompt: "Prek llambën për një ide", ideaLabel: "Ja një ide për faqen tënde të ardhshme",
+        ideaPrompt: "Prek llambën për të shfaqur kodin", ideaLabel: "Ja një ide për faqen tënde të ardhshme",
         ideaTap: "Prek këtu",
         newIdea: "Ide tjetër", buildIdea: "Ta ndërtojmë bashkë",
         ideas: ["Një faqe shërbimesh që i kthen vizitorët në klientë potencialë.","Një dyqan modern online i krijuar rreth produkteve të tua.","Një faqe rezervimesh që e bën procesin shumë të thjeshtë.","Një portfolio që e bën punën tënde të pamundur për t’u anashkaluar.","Një faqe dygjuhëshe që të ndihmon të arrish më shumë klientë.","Një landing page e fokusuar për lançimin e produktit tënd."],
@@ -146,7 +163,17 @@ Let’s build your next website.</p>
         aboutTitle: "Biznesi juaj meriton një faqe që punon po aq fort sa ju.",
         aboutText: "Dizajnoj dhe zhvilloj faqe moderne, responsive, të ndërtuara rreth brandit dhe qëllimeve të biznesit tuaj.\n\nBashkoj dizajnin e menduar, funksionalitetin pa pengesa dhe një qasje të fokusuar te përdoruesi për të krijuar faqe që duken bukur dhe e ndihmojnë biznesin tuaj të dallohet, të ndërtojë besim dhe t’i kthejë vizitorët në klientë.\n\nLe ta ndërtojmë faqen tuaj të ardhshme.",
         serviceOne: "Dizajn i faqeve", serviceTwo: "Zhvillim i plotë i faqeve",
-        serviceThree: "Përvoja responsive", contactLabel: "Keni një projekt në mendje?",
+        serviceThree: "Përvoja responsive",
+        processLabel: "Procesi im", processTitle: "Nga biseda e parë deri te lançimi.",
+        processIntro: "Një proces i qartë dhe bashkëpunues e mban çdo faqe të fokusuar, funksionale dhe të ndërtuar rreth qëllimeve tuaja.",
+        processSteps: [
+          { title: "Zbulojmë", text: "Përcaktojmë biznesin, audiencën, qëllimet dhe çfarë duhet të arrijë faqja." },
+          { title: "Dizajnojmë", text: "Krijoj drejtimin vizual, strukturën dhe përvojën e përdoruesit rreth brandit tuaj." },
+          { title: "Zhvillojmë", text: "Dizajni i aprovuar bëhet një faqe e plotë, responsive dhe funksionale." },
+          { title: "Përsosim", text: "Testoj çdo detaj, përmirësoj përvojën dhe përgatis gjithçka për lançim." },
+          { title: "Lançojmë", text: "Faqja përfundimtare publikohet, gati për biznesin dhe klientët tuaj." }
+        ],
+        contactLabel: "Keni një projekt në mendje?",
         contactTitle: "Le të krijojmë diçka që mbahet mend.",
         email: "Nis një bisedë", footer: "Dizajn & zhvillim nga Eli Gota",
         whatsapp: "Përshëndetje, jam e interesuar të filloj një projekt për një faqe interneti me ju!"
@@ -164,8 +191,9 @@ Let’s build your next website.</p>
 
     let language = "en";
     let ideaOn = false;
-    let ideaIndex = 0;
-    const bulbSvg = (on) => `<svg class="bulb-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M11.2 22.1h9.6"></path><path d="M12.5 26h7"></path><path d="M16 3.5a9 9 0 0 0-5.4 16.2c.9.7 1.5 1.5 1.7 2.4h7.4c.2-.9.8-1.7 1.7-2.4A9 9 0 0 0 16 3.5Z"></path>${on ? '<path class="bulb-filament" d="m12.5 13 2.3 2.3L19.7 10"></path>' : ''}<path class="bulb-ray" d="M16 0v2M4.7 4.7l1.5 1.5M0 16h2M30 16h2M25.8 6.2l1.5-1.5"></path></svg>`;
+    let activeProcess = 0;
+    const codeTerms = ["<html>","<header>","<main>","<section>","<article>","<button>","<form>","<footer>",".hero","#work","[data-theme]",":hover","display: grid;","position: relative;","color: #ff4f00;","gap: 24px;","@media (max-width)","var(--accent)","const","let","isActive","projectData","function toggleTheme()","return","map()","filter()","addEventListener()","querySelector()","async / await","useState()","useEffect()"];
+    const bulbSvg = (on) => `<svg class="bulb-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M11.2 22.1h9.6"></path><path d="M12.5 26h7"></path><path d="M16 3.5a9 9 0 0 0-5.4 16.2c.9.7 1.5 1.5 1.7 2.4h7.4c.2-.9.8-1.7 1.7-2.4A9 9 0 0 0 16 3.5Z"></path>${on ? '<path class="bulb-filament" d="M11.8 14.2c1.2-1.5 2.5-1.5 4.2 0 1.7 1.5 3 1.5 4.2 0"></path>' : ''}<path class="bulb-ray" d="M16 0v2M4.7 4.7l1.5 1.5M0 16h2M30 16h2M25.8 6.2l1.5-1.5"></path></svg>`;
 
     function renderIdea() {
       document.querySelectorAll(".idea-bulb").forEach(button => {
@@ -175,22 +203,22 @@ Let’s build your next website.</p>
         button.setAttribute("aria-pressed", String(ideaOn));
         button.dataset.hint = copy[language].ideaTap;
       });
-      document.querySelector(".idea-card").classList.toggle("is-visible", ideaOn);
-      document.getElementById("idea-label").textContent = copy[language].ideaLabel;
-      document.getElementById("idea-text").textContent = copy[language].ideas[ideaIndex];
-      document.getElementById("new-idea").textContent = copy[language].newIdea;
-      document.getElementById("build-idea").childNodes[0].nodeValue = copy[language].buildIdea;
-      const message = language === "en"
-        ? `Hello, I'm interested in creating this website with you: ${copy[language].ideas[ideaIndex]}`
-        : `Përshëndetje, jam e interesuar ta krijoj këtë faqe me ju: ${copy[language].ideas[ideaIndex]}`;
-      document.getElementById("build-idea").href = `https://wa.me/38349260868?text=${encodeURIComponent(message)}`;
+      document.getElementById("code-cloud").classList.toggle("is-visible", ideaOn);
     }
 
-    function showNextIdea() {
-      if (ideaOn) ideaIndex = (ideaIndex + 1) % copy[language].ideas.length;
-      ideaOn = true;
+    function toggleIdea() {
+      ideaOn = !ideaOn;
       renderIdea();
     }
+
+    document.getElementById("code-cloud").innerHTML = codeTerms.map((term, index) => {
+      const x = 4 + ((index * 29) % 91);
+      const y = 5 + ((index * 43) % 88);
+      const delay = (index % 9) * 55;
+      const drift = 8 + (index % 5) * 3;
+      const size = 10 + (index % 4) * 2;
+      return `<span style="--x:${x}%;--y:${y}%;--delay:${delay}ms;--drift:${drift}px;--size:${size}px">${term.replaceAll("<", "&lt;").replaceAll(">", "&gt;")}</span>`;
+    }).join("");
 
     function renderProjects() {
       document.getElementById("projects").innerHTML = projects.map((project, index) => `
@@ -220,6 +248,23 @@ Let’s build your next website.</p>
       `).join("");
     }
 
+    function renderProcess() {
+      const track = document.getElementById("process-track");
+      track.innerHTML = `<div class="process-line" aria-hidden="true"><i></i></div>${copy[language].processSteps.map((step, index) => `
+        <button class="process-step ${activeProcess === index ? "active" : ""}" type="button" data-process="${index}" aria-expanded="${activeProcess === index}">
+          <span class="process-number">${String(index + 1).padStart(2, "0")}</span>
+          <strong>${step.title}</strong>
+          <span class="process-text">${step.text}</span>
+        </button>
+      `).join("")}`;
+      track.querySelectorAll("[data-process]").forEach(button => {
+        button.addEventListener("click", () => {
+          activeProcess = Number(button.dataset.process);
+          renderProcess();
+        });
+      });
+    }
+
     function setLanguage(lang) {
       language = lang;
       document.documentElement.lang = lang === "al" ? "sq" : "en";
@@ -232,16 +277,19 @@ Let’s build your next website.</p>
       });
       document.getElementById("whatsapp-link").href =
         `https://wa.me/38349260868?text=${encodeURIComponent(copy[lang].whatsapp)}`;
-      ideaIndex = Math.min(ideaIndex, copy[lang].ideas.length - 1);
       renderIdea();
       renderProjects();
+      renderProcess();
     }
 
     document.querySelectorAll("[data-lang]").forEach(button => {
       button.addEventListener("click", () => setLanguage(button.dataset.lang));
     });
-    document.querySelectorAll(".idea-bulb").forEach(button => button.addEventListener("click", showNextIdea));
-    document.getElementById("new-idea").addEventListener("click", showNextIdea);
+    document.querySelectorAll(".idea-bulb").forEach(button => button.addEventListener("click", toggleIdea));
+    const processObserver = new IntersectionObserver(([entry]) => {
+      document.getElementById("process").classList.toggle("is-visible", entry.isIntersecting);
+    }, { threshold: .28 });
+    processObserver.observe(document.getElementById("process"));
     document.getElementById("year").textContent = new Date().getFullYear();
     setLanguage("en");
   </script>
