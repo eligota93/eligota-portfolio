@@ -70,14 +70,7 @@
         <h2 data-copy="aboutTitle">Your business deserves a website that works as hard as you do.</h2>
         <p data-copy="aboutText">I design and develop modern, responsive websites built around your brand and business goals.
 
-I combine thoughtful design, seamless functionality, and a user-focused approach to create websites that look good &amp; help your business stand out, build trust, and turn visitors into customers.
-
-Let’s build your next website.</p>
-        <div class="services">
-          <span data-copy="serviceOne">Website design</span>
-          <span data-copy="serviceTwo">Full website development</span>
-          <span data-copy="serviceThree">Responsive experiences</span>
-        </div>
+I make websites look good &amp; help businesses stand out, build trust, and turn visitors into customers.</p>
       </div>
     </section>
 
@@ -85,7 +78,7 @@ Let’s build your next website.</p>
       <div class="process-head">
         <p data-copy="processLabel">My process</p>
         <div>
-          <h2 data-copy="processTitle">From first conversation to final launch.</h2>
+          <h2 data-copy="processTitle">The process behind every website I build.</h2>
           <span data-copy="processIntro">A clear, collaborative process keeps every website focused, functional and built around your goals.</span>
         </div>
       </div>
@@ -128,10 +121,8 @@ Let’s build your next website.</p>
         scrollPreview: "Scroll to explore",
         visit: "Visit website", aboutLabel: "About me",
         aboutTitle: "Your business deserves a website that works as hard as you do.",
-        aboutText: "I design and develop modern, responsive websites built around your brand and business goals.\n\nI combine thoughtful design, seamless functionality, and a user-focused approach to create websites that look good & help your business stand out, build trust, and turn visitors into customers.\n\nLet’s build your next website.",
-        serviceOne: "Website design", serviceTwo: "Full website development",
-        serviceThree: "Responsive experiences",
-        processLabel: "My process", processTitle: "From first conversation to final launch.",
+        aboutText: "I design and develop modern, responsive websites built around your brand and business goals.\n\nI make websites look good & help businesses stand out, build trust, and turn visitors into customers.",
+        processLabel: "My process", processTitle: "The process behind every website I build.",
         processIntro: "A clear, collaborative process keeps every website focused, functional and built around your goals.",
         processSteps: [
           { title: "Discover", text: "We define your business, audience, goals and what the website needs to achieve." },
@@ -161,10 +152,8 @@ Let’s build your next website.</p>
         scrollPreview: "Lëviz për ta parë",
         visit: "Vizito faqen", aboutLabel: "Rreth meje",
         aboutTitle: "Biznesi juaj meriton një faqe që punon po aq fort sa ju.",
-        aboutText: "Dizajnoj dhe zhvilloj faqe moderne, responsive, të ndërtuara rreth brandit dhe qëllimeve të biznesit tuaj.\n\nBashkoj dizajnin e menduar, funksionalitetin pa pengesa dhe një qasje të fokusuar te përdoruesi për të krijuar faqe që duken bukur dhe e ndihmojnë biznesin tuaj të dallohet, të ndërtojë besim dhe t’i kthejë vizitorët në klientë.\n\nLe ta ndërtojmë faqen tuaj të ardhshme.",
-        serviceOne: "Dizajn i faqeve", serviceTwo: "Zhvillim i plotë i faqeve",
-        serviceThree: "Përvoja responsive",
-        processLabel: "Procesi im", processTitle: "Nga biseda e parë deri te lançimi.",
+        aboutText: "Dizajnoj dhe zhvilloj faqe moderne, responsive, të ndërtuara rreth brandit dhe qëllimeve të biznesit tuaj.\n\nKrijoj faqe që duken bukur dhe i ndihmojnë bizneset të dallohen, të ndërtojnë besim dhe t’i kthejnë vizitorët në klientë.",
+        processLabel: "Procesi im", processTitle: "Procesi pas çdo faqeje që ndërtoj.",
         processIntro: "Një proces i qartë dhe bashkëpunues e mban çdo faqe të fokusuar, funksionale dhe të ndërtuar rreth qëllimeve tuaja.",
         processSteps: [
           { title: "Zbulojmë", text: "Përcaktojmë biznesin, audiencën, qëllimet dhe çfarë duhet të arrijë faqja." },
@@ -207,8 +196,50 @@ Let’s build your next website.</p>
     }
 
     function toggleIdea() {
+      if (!ideaOn) playCodeRevealSound();
       ideaOn = !ideaOn;
       renderIdea();
+    }
+
+    function playCodeRevealSound() {
+      try {
+        const audio = new AudioContext();
+        const master = audio.createGain();
+        master.gain.setValueAtTime(.0001, audio.currentTime);
+        master.gain.exponentialRampToValueAtTime(.12, audio.currentTime + .018);
+        master.gain.exponentialRampToValueAtTime(.0001, audio.currentTime + .74);
+        master.connect(audio.destination);
+        [392, 523.25, 659.25].forEach((frequency, index) => {
+          const oscillator = audio.createOscillator();
+          const gain = audio.createGain();
+          const start = audio.currentTime + index * .055;
+          oscillator.type = index === 0 ? "triangle" : "sine";
+          oscillator.frequency.setValueAtTime(frequency, start);
+          oscillator.frequency.exponentialRampToValueAtTime(frequency * 1.12, start + .16);
+          gain.gain.setValueAtTime(.0001, start);
+          gain.gain.exponentialRampToValueAtTime(index === 0 ? .34 : .22, start + .012);
+          gain.gain.exponentialRampToValueAtTime(.0001, start + .24);
+          oscillator.connect(gain);
+          gain.connect(master);
+          oscillator.start(start);
+          oscillator.stop(start + .26);
+        });
+        Array.from({ length: 9 }).forEach((_, index) => {
+          const tick = audio.createOscillator();
+          const tickGain = audio.createGain();
+          const start = audio.currentTime + .17 + index * .055;
+          tick.type = "square";
+          tick.frequency.setValueAtTime(1050 + (index % 4) * 170, start);
+          tickGain.gain.setValueAtTime(.0001, start);
+          tickGain.gain.exponentialRampToValueAtTime(.045, start + .004);
+          tickGain.gain.exponentialRampToValueAtTime(.0001, start + .026);
+          tick.connect(tickGain);
+          tickGain.connect(master);
+          tick.start(start);
+          tick.stop(start + .03);
+        });
+        setTimeout(() => audio.close(), 900);
+      } catch {}
     }
 
     document.getElementById("code-cloud").innerHTML = codeTerms.map((term, index) => {
